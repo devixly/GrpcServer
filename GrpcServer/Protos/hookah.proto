@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcServer";
+
+package hookah;
+
+service Hookah {
+	rpc GetCoalRoasting (CoalRequest) returns (CoalResponse); 
+}
+
+message CoalRequest {
+	CoalType type = 1;
+	int32 coals = 2;
+	int32 warmUpTime = 3;
+}
+
+message CoalResponse {
+	CoalFried fried = 1;
+}
+
+enum CoalType {
+	FIREBRAND = 0;
+	NUSAKOKO = 1;
+	COCOSHISHA = 2;
+}
+enum CoalFried {
+	EASY = 0;
+	MIDDLE = 1;
+	HARD = 2;
+}
